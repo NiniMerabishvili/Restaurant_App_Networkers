@@ -1,0 +1,57 @@
+
+header {
+    padding: 15px;
+    padding-top: 2vw;
+    text-align: center;
+  }
+  
+  h1 {
+    margin: 0;
+    font-size: 28px;
+    color: #fff; /* Header text color */
+  }
+  
+  
+  
+  .landing-page_container {
+    margin-top: 20px;
+    text-align: center;
+  }
+  
+  a {
+    text-decoration: none;
+  }
+  
+  button {
+    background-color: #ad5a62; /* Button color */
+    color: #fff;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-right: 10px;
+    transition: background-color 0.3s;
+  }
+  
+  button:hover {
+    background-color: #65292A; /* Button color on hover */
+  }
+  
+  router-outlet {
+    width: 100%;
+  }
+  
+  footer {
+    padding: 15px;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+  }
+  
+  .footer_p {
+    margin: 0;
+    font-size: 14px;
+    color: #fff; /* Footer text color */
+  }

@@ -1,0 +1,133 @@
+/* Wrapper Styles */
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  transition: margin-left 0.3s;
+  display: none;
+}
+header {
+  display: flex;
+  justify-content: center;
+  column-gap: 3vw;
+  align-items: end;
+}
+mat-toolbar {
+  color: #fff;
+}
+
+
+.button {
+  color: #fff;
+  display: none;
+}
+
+/* Menu Styles */
+span {
+  padding: 20px;
+}
+
+.menu-row {
+  display: block;
+  padding: 10px;
+  text-decoration: none;
+  font-size: 16px;
+  transition: background-color 0.3s;
+}
+
+.menu-row:hover {
+  background-color: #ddd;
+  color: #ad5a62;
+}
+
+.menu-open {
+  background-color: #161616;
+  height: 100vh;
+  width: 30%;
+}
+
+.logoutbtn {
+  background-color: #ad5a62; /* Logout button color */
+  color: #fff;
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: 20px;
+  transition: background-color 0.3s;
+}
+
+.logoutbtn:hover {
+  background-color: #65292A; /* Logout button color on hover */
+}
+
+/* Page Content Styles */
+h2 {
+  text-align: center;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+mat-button {
+  background-color: #ad5a62;
+  color: #fff;
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: 10px;
+}
+
+mat-button:hover {
+  background-color: #ad5a62;
+}
+
+.customer-page {
+  display: flex;
+  margin-top: 3vw;
+  justify-content: center;
+  align-items: center;
+  column-gap: 10vw;
+}
+.dish-img {
+  width: 30vw;
+}
+.right-div {
+  display: flex;
+}
+.title {
+  font-size: 2.5vw;
+}
+
+
+/* Media query to show the burger icon only on screens up to 767px */
+@media only screen and (max-width: 767px) {
+  .wrapper {
+    display: block;
+  }
+  header {
+    display: none;
+  }
+  .menu-open {
+    width: 70%;
+  }
+  .customer-page {
+    flex-direction: column-reverse;
+    align-items: center;
+  }
+  .dish-img {
+    width: 80%;
+    margin: auto;
+  }
+  .title {
+    font-size: 5vw;
+    text-align: center;
+  }
+}

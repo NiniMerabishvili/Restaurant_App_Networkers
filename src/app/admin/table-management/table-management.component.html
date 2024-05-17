@@ -1,0 +1,69 @@
+<div class="wrapper" [ngClass]="{ 'menu-open': showMenu }"> 
+
+    <mat-toolbar color="primary">
+  
+      <button class="close_icon" mat-icon-button (click)="toggleMenu()">
+        <mat-icon *ngIf="!showMenu">
+          <i class="fas fa-bars"></i>
+        </mat-icon>
+        <mat-icon *ngIf="showMenu">
+          <i class="fas fa-times"></i>
+        </mat-icon>
+      </button>
+    </mat-toolbar>
+  
+  
+    <span *ngIf="showMenu">
+      <br>
+      <a routerLink="/table-management" class="active">show tables</a><br><br>
+      <a routerLink="/menu-management">show menus</a><br><br>
+      <button class="menu-row" class="logoutbtn" mat-button (click)="onLogout()">Logout</button>
+    </span>
+  </div> 
+  
+  <header>
+    <a routerLink="/table-management" class="active">show tables</a>
+    <a routerLink="/menu-management">show menus</a>
+      <button class="menu-row" class="logoutbtn" mat-button (click)="onLogout()">Logout</button>
+  </header>
+
+<div class="tables-con">
+<h2>add tables</h2>
+<form [formGroup]="addForm" (ngSubmit)="addTable()">
+    <input formControlName="number" placeholder="number"/>
+    <input formControlName="capacity" placeholder="capacity"/>
+    <input formControlName="type" placeholder="type"> 
+    <button [disabled]="!addForm.valid" type="submit">save</button>
+</form>
+
+
+<h2>Tables</h2>
+<div class="table">
+<form [formGroup]="editForm">
+    <div *ngFor="let tables of table" [ngClass]="{selected:editingTable?.id == tables.id}" class="row">
+        <div class="cell">
+            <span *ngIf="editingTable?.id != tables.id">{{tables.number}}</span>
+            <input *ngIf="editingTable?.id == tables.id" formControlName="number" placeholder="number">
+        </div>
+        <div class="cell">
+            <span *ngIf="editingTable?.id != tables.id">{{tables.capacity}}</span>
+            <input *ngIf="editingTable?.id == tables.id" formControlName="capacity" placeholder="capacity">
+        </div>
+        <div class="cell">
+            <span *ngIf="editingTable?.id != tables.id"> {{ tables.type }} </span>
+            <input *ngIf="editingTable?.id == tables.id" formControlName="type" placeholder="type" />
+        </div>
+        <div class="cell">
+            <button (click)="editTables(tables)" *ngIf="editingTable?.id!=tables.id">edit</button>
+            <button *ngIf="editingTable?.id==tables.id" [disabled]="!editForm.valid" (click)="updateTable()">save</button>
+        </div>
+        <div class="cell">
+            <button *ngIf="editingTable?.id != tables.id" (click)="deleteTables(tables.id)">delete</button>
+            <button *ngIf="editingTable?.id == tables.id" (click)="cancelEditTables()" >cancel</button>
+        </div>
+    </div>
+</form>
+</div>
+</div>
+
+

@@ -1,0 +1,28 @@
+
+
+<div class="container">
+  <h2>Sign In</h2>
+  <form (ngSubmit)="signIn()">
+    <div class="form-group">
+      <label for="email">Email:</label>
+      <input type="email" id="email" [(ngModel)]="email" name="email" required>
+    </div>
+
+    <div class="form-group">
+      <label for="password">Password:</label>
+      <input type="password" id="password" [(ngModel)]="password" name="password" required>
+    </div>
+
+    <button type="submit">Sign In</button>
+    <!-- <div class="notaccountdiv">
+      <p> Don't have an account yet? <a [routerLink]="['registration']"> Sign Up </a></p>
+    </div> -->
+    
+  </form>
+
+  <div *ngIf="loginFailed" style="color: red; margin-top: 10px;">
+    Wrong username or password. Please try again.
+  </div>
+</div>
+
+<router-outlet></router-outlet>

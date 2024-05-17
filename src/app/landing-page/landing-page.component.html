@@ -1,0 +1,15 @@
+<body>
+  <header>
+    <h1> Networkers </h1>
+  </header>
+  <main>
+    <div *ngIf="isUserSignedIn" class="landing-page_container">
+      <a [routerLink]="['registration']"> <button> Registration </button> </a>
+      <a [routerLink]="['sign-in']"> <button> Sign-in </button> </a>
+    </div>
+    <router-outlet></router-outlet>
+  </main>
+  <footer>
+    <p class="footer_p"> © AniMerabishvili, NiniMerabishvili, DachiJavakhishvili</p>
+  </footer>
+</body>

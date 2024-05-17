@@ -1,0 +1,76 @@
+<div class="wrapper" [ngClass]="{ 'menu-open': showMenu }"> 
+
+    <mat-toolbar color="primary">
+  
+      <button class="close_icon" mat-icon-button (click)="toggleMenu()">
+        <mat-icon *ngIf="!showMenu">
+          <i class="fas fa-bars"></i>
+        </mat-icon>
+        <mat-icon *ngIf="showMenu">
+          <i class="fas fa-times"></i>
+        </mat-icon>
+      </button>
+    </mat-toolbar>
+  
+  
+    <span *ngIf="showMenu">
+      <br>
+      <a routerLink="/table-management">show tables</a><br><br>
+      <a routerLink="/menu-management" class="active">show menus</a><br><br>
+      <button class="menu-row" class="logoutbtn" mat-button (click)="onLogout()">Logout</button>
+    </span>
+  </div> 
+  
+  <header>
+    <a routerLink="/table-management">show tables</a>
+      <a routerLink="/menu-management" class="active">show menus</a>
+      <button class="menu-row" class="logoutbtn" mat-button (click)="onLogout()">Logout</button>
+  </header>
+
+<!-- page -->
+<h2>add menus</h2>
+<form [formGroup]="addForm" (ngSubmit)="addMenu()">
+    <input formControlName="type" placeholder="type"/>
+    <input formControlName="name" placeholder="name"> 
+    <input formControlName="summary" placeholder="summary"> 
+    <input formControlName="description" placeholder="description"> 
+    <input formControlName="price" placeholder="price"> 
+    <button [disabled]="!addForm.valid" type="submit">save</button>
+</form>
+
+
+<h2>Menus</h2>
+<div class="table">
+<form [formGroup]="editForm">
+    <div *ngFor="let menus of menu" [ngClass]="{selected:editingMenu?.id == menus.id}" class="row">
+        <div class="cell">
+            <span *ngIf="editingMenu?.id != menus.id">{{menus.type}}</span>
+            <input *ngIf="editingMenu?.id == menus.id" formControlName="type" placeholder="type">
+        </div>
+        <div class="cell">
+            <span *ngIf="editingMenu?.id!= menus.id"> {{ menus.name }} </span>
+            <input *ngIf="editingMenu?.id == menus.id" formControlName="name" placeholder="name" />
+        </div>
+        <div class="cell">
+            <span *ngIf="editingMenu?.id!= menus.id"> {{ menus.summary }} </span>
+            <input *ngIf="editingMenu?.id == menus.id" formControlName="summary" placeholder="summary" />
+        </div>
+        <div class="cell">
+            <span *ngIf="editingMenu?.id!= menus.id"> {{ menus.description }} </span>
+            <input *ngIf="editingMenu?.id == menus.id" formControlName="description" placeholder="description" />
+        </div>
+        <div class="cell">
+            <span *ngIf="editingMenu?.id!= menus.id"> {{ menus.price }} </span>
+            <input *ngIf="editingMenu?.id == menus.id" formControlName="price" placeholder="price" />
+        </div>
+        <div class="cell">
+            <button (click)="editMenus(menus)" *ngIf="editingMenu?.id!=menus.id">edit</button>
+            <button *ngIf="editingMenu?.id==menus.id" [disabled]="!editForm.valid" (click)="updateMenu()">save</button>
+        </div>
+        <div class="cell">
+            <button *ngIf="editingMenu?.id != menus.id" (click)="deleteMenus(menus.id)">delete</button>
+            <button *ngIf="editingMenu?.id == menus.id" (click)="cancelEditMenus()" >cancel</button>
+        </div>
+    </div>
+</form>
+</div>

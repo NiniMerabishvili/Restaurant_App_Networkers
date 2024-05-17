@@ -1,0 +1,40 @@
+<!-- navigation menu -->
+
+<div class="wrapper" [ngClass]="{ 'menu-open': showMenu }"> 
+
+  <mat-toolbar color="primary">
+
+    <button class="close_icon" mat-icon-button (click)="toggleMenu()">
+      <mat-icon *ngIf="!showMenu">
+        <i class="fas fa-bars"></i>
+      </mat-icon>
+      <mat-icon *ngIf="showMenu">
+        <i class="fas fa-times"></i>
+      </mat-icon>
+    </button>
+  </mat-toolbar>
+
+
+  <span *ngIf="showMenu">
+    <a class="menu-row first" routerLink="/my-bookings">My bookings</a>
+    <a class="menu-row" mat-button routerLink="/my-orders">My orders</a>
+    <button class="menu-row" class="logoutbtn" mat-button (click)="onLogout()">Logout</button>
+  </span>
+</div> 
+
+<header>
+  <a class="menu-row first" routerLink="/my-bookings">My bookings</a>
+    <a class="menu-row" mat-button routerLink="/my-orders">My orders</a>
+    <button class="menu-row" class="logoutbtn" mat-button (click)="onLogout()">Logout</button>
+</header>
+
+<!-- page -->
+
+<div class="customer-page">
+  <div class="left-div"> 
+    <h1 class="title"> Taste Georgian <br> cuisine and make <br> your  own story here </h1>
+  </div>
+  <div class="right-div"> 
+    <img class="dish-img" src="../../../assets/customer_img.png" alt="dishes image">    
+  </div>
+</div>

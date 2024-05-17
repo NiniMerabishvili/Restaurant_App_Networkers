@@ -1,0 +1,77 @@
+
+<body>
+  <div class="wrapper" [ngClass]="{ 'menu-open': showMenu }"> 
+
+    <mat-toolbar color="primary">
+  
+      <button class="close_icon" mat-icon-button (click)="toggleMenu()">
+        <mat-icon *ngIf="!showMenu">
+          <i class="fas fa-bars"></i>
+        </mat-icon>
+        <mat-icon *ngIf="showMenu">
+          <i class="fas fa-times"></i>
+        </mat-icon>
+      </button>
+    </mat-toolbar>
+  
+  
+    <span *ngIf="showMenu">
+      <a class="menu-row first active" routerLink="/my-bookings">My bookings</a>
+      <a class="menu-row" mat-button routerLink="/my-orders">My orders</a>
+      <button class="menu-row" class="logoutbtn" mat-button (click)="onLogout()">Logout</button>
+    </span>
+  </div> 
+  
+  <header>
+    <a class="menu-row first active" routerLink="/my-bookings">My bookings</a>
+      <a class="menu-row" mat-button routerLink="/my-orders">My orders</a>
+      <button class="menu-row" class="logoutbtn" mat-button (click)="onLogout()">Logout</button>
+  </header>
+  
+  <!-- page -->
+
+
+<div class ="booking_container">
+    <form [formGroup]="bookingForm" (ngSubmit)="addBooking()" class="booktablecontainer">
+        <h2> Book the table </h2>
+        <label for="date">Choose Date</label>
+        <input formControlName="date" placeholder="Date" type="date" [min]="minDate" class="date"/>
+        <br>
+        <label for="table_name">Choose Table</label>
+        <select id="selectedTable" formControlName="table_name">
+            <option *ngFor="let table of tables" [value]="table.id" [disabled]="isTableBooked(table.id, bookingForm.value.date)">
+              Table {{ table.number }} ({{ table.capacity }} seats, {{table.type}})
+            </option>
+          </select>
+
+        <button [disabled]="!bookingForm.valid" type="submit">Save</button>
+    </form>
+    <div class="bookingscontainer">
+    <form [formGroup]="searchForm" (ngSubmit)="searchBookings()" class="searchcontainer">
+        <!-- Other form elements -->
+        <h2 for="searchDate"> My Bookings </h2>
+        <input formControlName="searchDate" placeholder="Search by Date" type="date" class="date"/>
+        <button type="submit">Search</button>
+      </form>
+
+    <div class="my-bookings">
+        <div class="past-bookings">
+            <h2>Past Bookings</h2>
+            <div *ngFor="let booking of pastBookings">
+              {{ booking.date | date:'dd/MM/yyyy' }} & {{ booking.table_name }}
+            </div>
+          </div>
+
+        <div class="future-bookings">
+          <h2>Future Bookings</h2>
+          <div *ngFor="let booking of futureBookings">
+            {{ booking.date | date:'dd/MM/yyyy' }} & {{ booking.table_name }}
+          </div>
+        </div>
+      </div>
+</div>
+
+    
+</div> 
+</body>
+

@@ -1,0 +1,87 @@
+<!-- navigation menu -->
+
+<div class="wrapper" [ngClass]="{ 'menu-open': showMenu }"> 
+
+  <mat-toolbar color="primary">
+
+    <button class="close_icon" mat-icon-button (click)="toggleMenu()">
+      <mat-icon *ngIf="!showMenu">
+        <i class="fas fa-bars"></i>
+      </mat-icon>
+      <mat-icon *ngIf="showMenu">
+        <i class="fas fa-times"></i>
+      </mat-icon>
+    </button>
+  </mat-toolbar>
+
+
+  <span *ngIf="showMenu">
+    <a class="menu-row first" routerLink="/my-bookings">My bookings</a>
+    <a class="menu-row active" mat-button routerLink="/my-orders">My orders</a>
+    <button class="menu-row" class="logoutbtn" mat-button (click)="onLogout()">Logout</button>
+  </span>
+</div> 
+
+<header>
+  <a class="menu-row first" routerLink="/my-bookings">My bookings</a>
+    <a class="menu-row active" mat-button routerLink="/my-orders">My orders</a>
+    <button class="menu-row" class="logoutbtn" mat-button (click)="onLogout()">Logout</button>
+</header>
+
+<!-- page -->
+
+<div class="order-container">
+  <h2 class="order-heading">Create New Order</h2>
+
+  <button type="button" (click)="showDialog()" class="add-order-button">
+    <span class="pi pi-plus">Add New Item</span> 
+  </button>
+
+  <p-dialog [(visible)]="display" appendTo="body" [style]="{'position': 'absolute', 'left': '5%', 'top': '20%'}" class="p_dialog">
+    <form [formGroup]="orderForm" (ngSubmit)="addOrders()" class="order-form">
+      <div class="form-group">
+        <label for="menuSelect" class="form-label">Select Menu:</label>
+        <select id="menuSelect" formControlName="name" class="form-control">
+          <option *ngFor="let menu of menus" [value]="menu.id">{{ menu.name }} - {{ menu.price }}</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="quantityInput" class="form-label">Quantity:</label>
+        <input type="number" id="quantityInput" formControlName="quantity" name="quantity" class="form-control">
+      </div>
+
+      <button type="submit" class="confirm-button">
+        <span class="pi pi-check">Add item</span> 
+      </button>
+    </form>
+  </p-dialog>
+
+  <form [formGroup]="editForm">
+    <div *ngFor="let order of orders" [ngClass]="{selected:editingOrder?.id == order.id}" class="row">
+        <div class="cell">
+            <span class="row" *ngIf="editingOrder?.id != order.id"><h4>Name: </h4><div>{{order.name}}</div></span>
+            <input *ngIf="editingOrder?.id == order.id" formControlName="name" placeholder="name">
+        </div>
+        <div class="cell">
+            <span class="row" *ngIf="editingOrder?.id!= order.id"><h4>Quantity: </h4> {{ order.quantity }} </span>
+            <input *ngIf="editingOrder?.id == order.id" formControlName="quantity" placeholder="quantity" />
+        </div>
+        <div class="cell">
+          <button class="edit" (click)="editOrders(order)" *ngIf="editingOrder?.id!=order.id">edit</button>
+          <button *ngIf="editingOrder?.id==order.id" [disabled]="!editForm.valid" (click)="updateOrder()">save</button>
+      </div>
+      <div class="cell">
+          <button *ngIf="editingOrder?.id != order.id" (click)="deleteOrders(order.id)">delete</button>
+          <button *ngIf="editingOrder?.id == order.id" (click)="cancelEditOrders()" >cancel</button>
+      </div>
+    </div>
+  </form>
+
+  <div *ngIf="orders.length > 0" class="total-price">
+    <h3 class="total-price-heading">Total Price: {{ getTotalPrice() }}</h3>
+  </div>
+</div>
+
+
+

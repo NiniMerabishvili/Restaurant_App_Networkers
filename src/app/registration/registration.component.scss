@@ -1,0 +1,80 @@
+/* Shared Styles */
+
+.container, .registration-container {
+  max-width: 30%;
+  margin: 50px auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  opacity: 0; /* Initially set opacity to 0 for the fade-in effect */
+  animation: fadeIn 0.8s ease-in-out forwards; /* Animation for fade-in effect */
+}
+
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px); /* Optional: Start from a slightly above position */
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+h2 {
+  text-align: center;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group {
+  margin-bottom: 5%;
+}
+
+label {
+  font-weight: bold;
+}
+
+input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-top: 10px;
+}
+
+button {
+  background-color: #ad5a62;
+  color: #fff;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+button:hover {
+  background-color: #ad5a62;
+}
+
+div[role="alert"] {
+  color: #ad5a62;
+  margin-top: 10px;
+  font-size: 14px;
+}
+
+@media only screen and (max-width: 767px) {
+  .container, .registration-container {
+    max-width: 90%;
+  }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+  .container, .registration-container {
+    max-width: 60%;
+  }
+}

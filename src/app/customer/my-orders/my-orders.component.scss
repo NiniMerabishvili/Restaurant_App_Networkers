@@ -1,0 +1,174 @@
+/* Wrapper Styles */
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  transition: margin-left 0.3s;
+  display: none;
+}
+header {
+  display: flex;
+  justify-content: center;
+  column-gap: 3vw;
+  align-items: end;
+}
+mat-toolbar {
+  color: #fff;
+}
+
+
+/* Menu Styles */
+span {
+  padding: 20px;
+}
+
+.menu-row {
+  display: block;
+  padding: 10px;
+  text-decoration: none;
+  font-size: 16px;
+  transition: background-color 0.3s;
+}
+
+.menu-row:hover {
+  background-color: #ddd;
+  color: #ad5a62;
+}
+.menu-open {
+  background-color: #161616;
+  height: 100vh;
+  width: 30%;
+}
+
+.active {
+  color: #ad5a62;
+}
+
+.order-container {
+  max-width: 90%;
+  margin: 20px auto;
+  padding: 20px;
+  border: 1px solid white;
+  border-radius: 8px;
+}
+
+
+.order-heading {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+h4 {
+  display: contents;
+  margin-right: 5px
+}
+
+/* Style the "Add New Item" button */
+.add-order-button {
+  background-color: #ad5a62;
+  color: #fff;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-bottom: 15px;
+}
+
+.order-form {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Style form groups */
+.form-group {
+  margin-bottom: 15px;
+}
+
+/* Style form labels */
+.form-label {
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+
+/* Style form controls */
+.form-control {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #555;
+  border-radius: 4px;
+}
+
+/* Style the "Add item" button inside the form */
+.confirm-button {
+  background-color: #ad5a62;
+  color: #fff;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* Style the table for orders */
+.row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  padding: 10px;
+  background-color: #555;
+  border-radius: 4px;
+}
+
+/* Highlight the selected row */
+.selected {
+  background-color: #777;
+}
+
+/* Style the edit and delete buttons */
+.cell button {
+  background-color: #ad5a62;
+  color: white;
+  padding: 5px 10px;
+  margin-right: 5px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* Style the total price section */
+.total-price {
+  margin-top: 20px;
+}
+
+
+.total-price-heading {
+  font-size: 18px;
+}
+
+
+
+@media only screen and (max-width: 767px) {
+  .wrapper {
+    display: block;
+  }
+  header {
+    display: none;
+  }
+  .menu-open {
+    width: 70%;
+  }
+  .edit {
+    margin-right: 2vw;
+  }
+  .cell {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    column-gap: 2vw;
+    row-gap: 2vw;
+  }
+  span {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}

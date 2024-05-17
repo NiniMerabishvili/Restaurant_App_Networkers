@@ -1,0 +1,23 @@
+<div class="registration-container">
+  <h2>Registration</h2>
+  <form [formGroup]="registrationForm" (ngSubmit)="submitRegistrationForm()" class="regform">
+    <div class="form-group">
+      <input type="text" id="name" formControlName="name" placeholder="{{ 'Name:' }}"/>
+    </div>
+    <div class="form-group">
+      <input type="text" id="lastname" formControlName="lastname" placeholder="{{ 'Last Name:' }}"/>
+    </div>
+    <div class="form-group">
+      <input type="text" id="phonenumber" formControlName="phonenumber" placeholder="{{ 'Phone Number:' }}"/>
+    </div>
+    <div class="form-group">
+      <input type="email" id="email" formControlName="email" placeholder="{{ 'Email:' }}"/>
+    </div>
+    <div class="form-group">
+      <input type="password" id="password" formControlName="password" placeholder="{{ 'Password:' }}"/>
+    </div>
+    <div class="form-group">
+      <button type="submit" [disabled]="!registrationForm.valid" class="submit-button">Register</button>
+    </div>
+  </form>
+</div>
